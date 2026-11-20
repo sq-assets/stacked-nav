@@ -1,0 +1,17 @@
+/* Stacked Nav: header links stacked on the left or right */
+.sn-on .header-display-desktop{position:relative}
+.sn-on .header-display-desktop .header-nav{position:absolute;top:var(--sn-top,0);z-index:3;flex:none;width:auto;margin:0!important}
+.sn-left .header-display-desktop .header-nav{left:0}
+.sn-right .header-display-desktop .header-nav{right:0}
+.sn-on .header-display-desktop .header-nav-wrapper{display:block}
+.sn-on .header-display-desktop .header-nav-list{display:flex!important;flex-direction:column;flex-wrap:nowrap;align-items:var(--sn-align,flex-end);gap:var(--sn-gap,4px);margin:0!important}
+.sn-on .header-display-desktop .header-nav-item{margin:0!important;padding:0!important;line-height:1.15;text-align:inherit}
+.sn-left .header-display-desktop .header-nav-list{text-align:left}
+.sn-right .header-display-desktop .header-nav-list{text-align:right}
+.sn-on .header-display-desktop .header-nav-item>a,.sn-on .header-display-desktop .header-nav-folder-title{padding:0!important;font-size:var(--sn-size,inherit)!important;font-weight:var(--sn-weight,inherit)!important;text-transform:var(--sn-case,inherit)!important;letter-spacing:var(--sn-spacing,inherit)!important;color:var(--sn-color,inherit)!important;transition:color .2s ease}
+.sn-on .header-display-desktop .header-nav-item>a:hover,.sn-on .header-display-desktop .header-nav-folder-title:hover{color:var(--sn-hover,var(--sn-color,inherit))!important}
+.sn-on .header-display-desktop .header-nav-item--active>a{color:var(--sn-active,var(--sn-color,inherit))!important}
+/* folders open to the side so they don't cover the links below */
+.sn-on .header-display-desktop .header-nav-folder-content{top:0!important;transform:none!important}
+.sn-right .header-display-desktop .header-nav-folder-content{left:auto!important;right:100%!important;padding-right:20px;text-align:right}
+.sn-left .header-display-desktop .header-nav-folder-content{right:auto!important;left:100%!important;padding-left:20px}
