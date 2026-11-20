@@ -15,3 +15,15 @@
 .sn-on .header-display-desktop .header-nav-folder-content{top:0!important;transform:none!important}
 .sn-right .header-display-desktop .header-nav-folder-content{left:auto!important;right:100%!important;padding-right:20px;text-align:right}
 .sn-left .header-display-desktop .header-nav-folder-content{right:auto!important;left:100%!important;padding-left:20px}
+/* sticky copy of the stack (data-sticky="on") */
+.sn-float{position:fixed;z-index:9999;visibility:hidden;pointer-events:none}
+.sn-float.sn-show{visibility:visible;pointer-events:auto}
+.sn-float .header-nav-list{display:flex;flex-direction:column;align-items:var(--sn-align,flex-end);gap:var(--sn-gap,4px);margin:0;padding:0}
+.sn-float.sn-left .header-nav-list{text-align:left}
+.sn-float.sn-right .header-nav-list{text-align:right}
+.sn-float .header-nav-item{margin:0;padding:0;line-height:inherit}
+.sn-float a{color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;transition:color .2s ease}
+.sn-float a:hover{color:var(--sn-hover,inherit)}
+.sn-float .header-nav-item--active>a{color:var(--sn-active,inherit)}
+.sn-float .header-nav-folder-content{display:none}
+.sn-float.sn-blend{mix-blend-mode:difference;color:#fff!important}

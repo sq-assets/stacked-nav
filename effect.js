@@ -21,5 +21,19 @@
     const hit=[...bar.querySelectorAll('.header-title-text,.header-title-logo,.header-actions a,.header-actions button,.header-actions svg')].some(el=>{const r=el.getBoundingClientRect();return r.width&&r.height&&r.left<n.right+gap&&r.right>n.left-gap});
     if(hit)bar.style.setProperty('padding-'+side,(n.width+gap)+'px');
     if(!h.classList.contains('sn-overlap'))bar.style.minHeight=(list.offsetHeight+list.offsetTop)+'px'};
+  /* sticky: the stack scrolls up with the header, then stays pinned in the corner */
+  if((ds.sticky||'off')==='on'){
+    const fl=document.createElement('nav');fl.className='sn-float sn-'+side+((ds.stickyBlend||'off')==='on'?' sn-blend':'');
+    fl.setAttribute('aria-label','Site navigation');fl.append(list.cloneNode(true));document.body.append(fl);
+    [...h.style].filter(p=>p.startsWith('--sn-')).forEach(p=>fl.style.setProperty(p,h.style.getPropertyValue(p)));
+    const o=[...list.querySelectorAll('a')],c=[...fl.querySelectorAll('a')];
+    let TOP=ds.stickyTop!=null&&ds.stickyTop!==''?parseFloat(ds.stickyTop):null;
+    const look=()=>{const cs=getComputedStyle(o[0]||list);['fontFamily','fontSize','fontWeight','letterSpacing','textTransform','color','lineHeight'].forEach(k=>fl.style[k]=cs[k]);
+      o.forEach((a,i)=>c[i]&&(c[i].style.textDecoration=getComputedStyle(a).textDecoration))};
+    const check=()=>{const r=list.getBoundingClientRect();if(TOP==null&&scrollY<1)TOP=r.top;const t=TOP??20;
+      const stuck=r.top<t;fl.classList.toggle('sn-show',stuck);list.style.visibility=stuck?'hidden':'';
+      fl.style.top=t+'px';fl.style[side]=(side==='right'?innerWidth-r.right-(innerWidth-document.documentElement.clientWidth):r.left)+'px'};
+    look();check();addEventListener('scroll',check,{passive:true});addEventListener('resize',()=>{look();check()});addEventListener('load',()=>{look();check()});
+  }
   fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);
 })();

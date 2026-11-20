@@ -7,8 +7,8 @@ Paste into **Settings → Developer tools → Code injection → Footer**. Chang
 
 ```html
 <!-- Stacked Nav: header links stacked on one side -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sq-assets/stacked-nav@v1.0.0/effect.css">
-<script src="https://cdn.jsdelivr.net/gh/sq-assets/stacked-nav@v1.0.0/effect.js"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sq-assets/stacked-nav@v1.1.0/effect.css">
+<script src="https://cdn.jsdelivr.net/gh/sq-assets/stacked-nav@v1.1.0/effect.js"
   data-side="right"
   data-align="right"
   data-gap="4"
@@ -21,6 +21,9 @@ Paste into **Settings → Developer tools → Code injection → Footer**. Chang
   data-active-color=""
   data-top="0"
   data-overlap="off"
+  data-sticky="off"
+  data-sticky-top=""
+  data-sticky-blend="off"
   data-pages=""></script>
 ```
 
@@ -35,6 +38,9 @@ Paste into **Settings → Developer tools → Code injection → Footer**. Chang
 | `data-top` | Nudge the stack down from the top of the header, in px |
 | `data-overlap` | `off` (default) = the header grows to fit the stack; `on` = the header stays slim and the links hang down over the page |
 | `data-space` | Room kept between the stack and the logo/buttons if they'd touch (40px) |
+| `data-sticky` | `on` = the stack scrolls up with the header, then stays pinned in its corner as you scroll; `off` (default) = scrolls away with the header |
+| `data-sticky-top` | How far from the top of the screen it pins, in px (blank = where it starts) |
+| `data-sticky-blend` | `on` = pinned links invert against whatever's behind them (stays readable over photos) |
 | `data-pages` | Only on these pages, comma separated, e.g. `/,/about`. Blank = every page |
 
 Folders open to the side of the stack instead of covering the links below.
