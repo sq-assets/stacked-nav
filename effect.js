@@ -13,12 +13,13 @@
   set('--sn-case',ds.uppercase==='on'?'uppercase':ds.uppercase==='off'?'none':'');set('--sn-spacing',ds.letterSpacing);
   set('--sn-color',ds.color);set('--sn-hover',ds.hoverColor);set('--sn-active',ds.activeColor);set('--sn-top',ds.top&&px(ds.top));
   set('--sn-align',{left:'flex-start',right:'flex-end',center:'center'}[(ds.align||side).toLowerCase()]);
-  /* keep the logo and buttons clear of the stack, and make room for it */
+  /* make room for the stack, and keep the logo and buttons clear of it */
+  const list=nav.querySelector('.header-nav-list')||nav;
   const fit=()=>{
     bar.style.removeProperty('padding-'+side);bar.style.minHeight='';
-    const n=nav.getBoundingClientRect(),gap=parseFloat(ds.space)||40;
-    const hit=[...bar.querySelectorAll('.header-title,.header-actions')].some(el=>{const r=el.getBoundingClientRect();return r.width&&r.left<n.right&&r.right>n.left});
+    const n=list.getBoundingClientRect(),gap=parseFloat(ds.space)||40;
+    const hit=[...bar.querySelectorAll('.header-title-text,.header-title-logo,.header-actions a,.header-actions button,.header-actions svg')].some(el=>{const r=el.getBoundingClientRect();return r.width&&r.height&&r.left<n.right+gap&&r.right>n.left-gap});
     if(hit)bar.style.setProperty('padding-'+side,(n.width+gap)+'px');
-    if(!h.classList.contains('sn-overlap'))bar.style.minHeight=(nav.offsetHeight+nav.offsetTop)+'px'};
+    if(!h.classList.contains('sn-overlap'))bar.style.minHeight=(list.offsetHeight+list.offsetTop)+'px'};
   fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);
 })();
